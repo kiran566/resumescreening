@@ -16,6 +16,8 @@ def download_model():
     if not os.path.exists(output):
         print("Downloading clf.pkl from Google Drive...")
         gdown.download(url, output, quiet=False)
+download_model()
+
 
 # Load pre-trained model and TF-IDF vectorizer (ensure these are saved earlier)
 svc_model = pickle.load(open('model/clf.pkl', 'rb'))  # Example file name, adjust as needed
@@ -24,7 +26,6 @@ le = pickle.load(open('model/encoder.pkl', 'rb'))  # Example file name, adjust a
 
 
 # Function to clean resume text
-download_model()
 
 def cleanResume(txt):
     cleanText = re.sub(r'http\S+\s', ' ', txt)
